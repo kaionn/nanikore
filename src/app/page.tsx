@@ -60,8 +60,10 @@ export default function Home() {
         setCanUndo(false);
       }} />
 
-      <main className="flex-1 flex flex-col items-center justify-center px-4 py-6 md:max-w-2xl md:mx-auto md:w-full">
-        <CardStack ref={cardStackRef} ideas={ideas} onSwipe={handleSwipe} />
+      <main className="flex-1 flex flex-col items-center justify-center px-4 py-6">
+        <div className="card-stack-glow">
+          <CardStack ref={cardStackRef} ideas={ideas} onSwipe={handleSwipe} />
+        </div>
         <SwipeControls
           onNope={handleNope}
           onLike={handleLike}

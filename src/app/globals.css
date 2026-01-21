@@ -223,4 +223,32 @@
         0 0 40px var(--neon-glow);
     }
   }
+
+  /* Background glow for card stack (desktop only) */
+  .card-stack-glow {
+    position: relative;
+    isolation: isolate;
+  }
+
+  @media (min-width: 768px) {
+    .card-stack-glow::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 550px;
+      height: 450px;
+      background: radial-gradient(
+        ellipse at center,
+        oklch(0.93 0.25 115 / 30%) 0%,
+        oklch(0.93 0.25 115 / 18%) 35%,
+        oklch(0.93 0.25 115 / 5%) 60%,
+        transparent 80%
+      );
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(50px);
+    }
+  }
 }

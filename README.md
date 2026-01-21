@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NAIKORE（ナイコレ）
 
-## Getting Started
+> 開発者向け課題発見・マッチングアプリの UI モックアップ
 
-First, run the development server:
+サイバーパンク/ダークモードの美学で、Tinder スタイルのカードスワイプ UI を特徴としています。
+
+## デモ
+
+**https://nanikore-zeta.vercel.app**
+
+## スクリーンショット
+
+<!-- TODO: スクリーンショットを追加 -->
+
+## 特徴
+
+- **スワイプ UI** - Tinder 風のカードスワイプで課題をブラウズ
+- **サイバーパンクテーマ** - ネオンライム × ダークモードの美学
+- **レスポンシブ対応** - モバイル/タブレット/デスクトップに最適化
+- **Framer Motion アニメーション** - スムーズなカード投げ飛ばしエフェクト
+
+## 技術スタック
+
+| カテゴリ | 技術 |
+|---------|------|
+| フレームワーク | Next.js 16 (App Router) |
+| 言語 | TypeScript |
+| スタイリング | Tailwind CSS 4 |
+| アニメーション | Framer Motion |
+| アイコン | Lucide React |
+| デプロイ | Vercel |
+
+## セットアップ
 
 ```bash
+# 依存関係のインストール
+npm install
+
+# 開発サーバーを起動
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000 でアプリが起動します。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## プロジェクト構成
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── layout.tsx      # ルートレイアウト
+│   ├── page.tsx        # メインページ
+│   └── globals.css     # テーマ定義
+├── components/
+│   ├── Header.tsx      # ヘッダー
+│   ├── TabNav.tsx      # タブナビゲーション
+│   ├── CardStack.tsx   # スワイプカードスタック
+│   ├── IdeaCard.tsx    # アイデアカード
+│   └── ActionButton.tsx # CTA ボタン
+├── types/
+│   └── idea.ts         # 型定義
+└── data/
+    └── mockIdeas.ts    # ダミーデータ
+```
 
-## Learn More
+## 主な機能
 
-To learn more about Next.js, take a look at the following resources:
+### カードスワイプ
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 右スワイプ → LIKE（興味あり）
+- 左スワイプ → NOPE（スキップ）
+- ドラッグ中に回転・不透明度が変化
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### カテゴリ
 
-## Deploy on Vercel
+課題は以下のカテゴリで分類されます：
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 推し活
+- 管理
+- 効率化
+- エンタメ
+- 学習
+- 健康
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### タブ切り替え
+
+- トレンド - 人気の課題
+- 新着 - 最近投稿された課題
+- 解決済み - 誰かが解決した課題
+
+## コマンド
+
+```bash
+npm run dev     # 開発サーバー起動
+npm run build   # プロダクションビルド
+npm run start   # プロダクションサーバー起動
+npm run lint    # ESLint 実行
+```
+
+## ライセンス
+
+MIT

@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude code harness (development files)
+.claude/memory/
+.claude/settings.json
+.claude/state/
+.claude-code-harness-version

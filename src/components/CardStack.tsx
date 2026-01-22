@@ -34,8 +34,8 @@ export const CardStack = forwardRef<CardStackRef, CardStackProps>(
     const rotate = useTransform(x, [-300, 0, 300], [-15, 0, 15]);
     const opacity = useTransform(x, [-300, -150, 0, 150, 300], [0.7, 1, 1, 1, 0.7]);
 
-    const likeOpacity = useTransform(x, [50, 150], [0, 0.9]);
-    const nopeOpacity = useTransform(x, [-150, -50], [0.9, 0]);
+    const likeOpacity = useTransform(x, [50, 150], [0, 1]);
+    const nopeOpacity = useTransform(x, [-150, -50], [1, 0]);
 
     const currentIdeas = ideas.slice(currentIndex, currentIndex + 3);
     const canUndo = history.length > 0;

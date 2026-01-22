@@ -44,11 +44,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col max-w-md mx-auto border-x border-gray-800">
       <Header />
       <TabNav activeTab={activeTab} onTabChange={setActiveTab} />
 
-      <main className="flex-1 flex flex-col items-center justify-center px-4 py-6">
+      <main className="flex-1 flex flex-col items-center justify-center px-4 py-6 pb-24">
         <div className="card-stack-glow">
           <CardStack ref={cardStackRef} ideas={ideas} onSwipe={handleSwipe} />
         </div>
@@ -61,7 +61,7 @@ export default function Home() {
 
       <FloatingActionButton onClick={handleAddIdea} />
 
-      <footer className="p-4 pb-8 md:max-w-2xl md:mx-auto md:w-full">
+      <footer className="p-4 pb-8 max-w-md mx-auto w-full fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-background via-background/90 to-transparent">
         <ActionButton onClick={handleBuildIt} disabled={!likedIdea} />
       </footer>
     </div>

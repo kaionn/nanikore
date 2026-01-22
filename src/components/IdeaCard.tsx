@@ -80,13 +80,19 @@ export function IdeaCard({ idea, className, isTop = false, onAgree }: IdeaCardPr
         {idea.title}
       </h2>
 
-      <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+      <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">
         {idea.description}
       </p>
 
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1 font-mono text-primary">
-          <Star className="h-4 w-4 fill-primary" />
+        <div className={cn(
+          "flex items-center gap-1 font-mono text-primary",
+          idea.xp >= 10000 && "text-neon-glow"
+        )}>
+          <Star className={cn(
+            "h-4 w-4 fill-primary",
+            idea.xp >= 10000 && "animate-pulse"
+          )} />
           <span className="text-sm font-semibold">{formatXP(idea.xp)} XP</span>
           {idea.isTrending && <span className="ml-1">🔥</span>}
         </div>

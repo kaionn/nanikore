@@ -30,8 +30,9 @@ export const CardStack = forwardRef<CardStackRef, CardStackProps>(
     const [history, setHistory] = useState<SwipeHistory[]>([]);
     const x = useMotionValue(0);
 
-    const rotate = useTransform(x, [-300, 0, 300], [-25, 0, 25]);
-    const opacity = useTransform(x, [-300, -150, 0, 150, 300], [0.5, 1, 1, 1, 0.5]);
+    // 「紙のカード」のような重さ: 回転を控えめに、透明度は維持
+    const rotate = useTransform(x, [-300, 0, 300], [-15, 0, 15]);
+    const opacity = useTransform(x, [-300, -150, 0, 150, 300], [0.7, 1, 1, 1, 0.7]);
 
     const likeOpacity = useTransform(x, [50, 150], [0, 0.9]);
     const nopeOpacity = useTransform(x, [-150, -50], [0.9, 0]);
@@ -48,8 +49,9 @@ export const CardStack = forwardRef<CardStackRef, CardStackProps>(
 
       animate(x, targetX, {
         type: "spring",
-        stiffness: 300,
-        damping: 30,
+        stiffness: 400,
+        damping: 40,
+        velocity: 800,
         onComplete: () => {
           if (currentIdea) {
             setHistory((prev) => [...prev, { idea: currentIdea, direction }]);
@@ -131,17 +133,25 @@ export const CardStack = forwardRef<CardStackRef, CardStackProps>(
               <motion.div
                 key={idea.id}
                 className="absolute"
-                style={{
-                  zIndex: currentIdeas.length - index,
+                animate={{
                   scale: 1 - index * 0.05,
                   y: index * 8,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 25,
+                }}
+                style={{
+                  zIndex: currentIdeas.length - index,
                   ...(isTop ? { x, rotate, opacity } : {}),
                 }}
                 drag={isTop && !isAnimating ? "x" : false}
                 dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.9}
+                dragElastic={0.6}
+                dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
                 onDragEnd={isTop ? handleDragEnd : undefined}
-                whileDrag={{ cursor: "grabbing" }}
+                whileDrag={{ cursor: "grabbing", scale: 1.02 }}
               >
                 {isTop && (
                   <>

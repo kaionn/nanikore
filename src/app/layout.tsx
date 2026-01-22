@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_JP, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const notoSansJP = Noto_Sans_JP({
+  variable: "--font-noto-sans-jp",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -32,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${notoSansJP.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         {children}
       </body>

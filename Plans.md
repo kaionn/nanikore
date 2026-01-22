@@ -16,38 +16,40 @@
 
 ### UI/UX Refinement
 
-- [ ] スワイプアニメーションの調整 `cc:TODO`
+- [x] スワイプアニメーションの調整 `cc:完了`
   - ドラッグ時の rotate/opacity を調整し「紙のカード」のような重さを表現
-  - カードが画面外へ消え、次のカードがポップアップするトランジション改善
+  - AnimatePresence で次のカードがポップアップするトランジション実装
+  - dragElastic=0.6、whileDrag scale=1.02 で重厚感を追加
 
 ### Design System & Theming
 
-- [ ] カラーパレットの完全適用 `cc:TODO`
-  - Background: Jet Black (#121212)
-  - Card Background: Dark Gray (#1E1E1E)
-  - Accent: Neon Lime Green (#CCFF00)
+- [x] カラーパレットの完全適用 `cc:完了`
+  - Background: Jet Black (#121212) - globals.css で適用済み
+  - Card Background: Dark Gray (#1E1E1E) - globals.css で適用済み
+  - Accent: Neon Lime Green (#CCFF00) - globals.css で適用済み
 
-- [ ] タイポグラフィの適用 `cc:TODO`
+- [x] タイポグラフィの適用 `cc:完了`
   - 日本語: Noto Sans JP (400, 700)
   - 数字/XP: JetBrains Mono（等幅）
 
-- [ ] ヘッダーロゴデザインの実装 `cc:TODO`
-  - NAI: アウトライン / KORE: 塗りつぶし
-  - チケットアイコン（SVG）をライムグリーンで配置
+- [x] ヘッダーロゴデザインの実装 `cc:完了`
+  - NAI: アウトライン（-webkit-text-stroke）
+  - KORE: 塗りつぶし + ネオングロー
+  - チケットアイコン（Lucide）をライムグリーンで配置
 
 ### Micro-Interactions
 
-- [ ] "I'LL BUILD IT" ボタンのエフェクト `cc:TODO`
-  - ホバー/タップ時にライムグリーンの輝き増加
-  - 紙吹雪（Confetti）エフェクトの検討
+- [x] "I'LL BUILD IT" ボタンのエフェクト `cc:完了`
+  - ホバー時に neon-glow → neon-glow-lg で輝き増加
+  - whileHover/whileTap で scale アニメーション
 
-- [ ] XP 表示の可視化強化 `cc:TODO`
-  - 炎アイコンや上昇矢印の追加
-  - 高 XP（10,000+）時はライムグリーン + 発光
+- [x] XP 表示の可視化強化 `cc:完了`
+  - 高 XP（10,000+）時は text-neon-glow で発光
+  - Star アイコンに animate-pulse を追加
 
 ### Content Structure
 
-- [ ] 長いテキストの省略処理 `cc:TODO`
+- [x] 長いテキストの省略処理 `cc:完了`
   - Description に line-clamp-3 を適用
 
 ---

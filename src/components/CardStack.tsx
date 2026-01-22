@@ -33,8 +33,8 @@ export const CardStack = forwardRef<CardStackRef, CardStackProps>(
     const rotate = useTransform(x, [-300, 0, 300], [-25, 0, 25]);
     const opacity = useTransform(x, [-300, -150, 0, 150, 300], [0.5, 1, 1, 1, 0.5]);
 
-    const likeOpacity = useTransform(x, [0, 100], [0, 1]);
-    const nopeOpacity = useTransform(x, [-100, 0], [1, 0]);
+    const likeOpacity = useTransform(x, [50, 150], [0, 0.9]);
+    const nopeOpacity = useTransform(x, [-150, -50], [0.9, 0]);
 
     const currentIdeas = ideas.slice(currentIndex, currentIndex + 3);
     const canUndo = history.length > 0;
@@ -114,14 +114,6 @@ export const CardStack = forwardRef<CardStackRef, CardStackProps>(
       return (
         <div className="flex flex-col items-center justify-center h-[60vh] min-h-[350px] max-h-[500px] gap-4">
           <p className="text-muted-foreground">もうカードがありません</p>
-          {canUndo && (
-            <button
-              onClick={undo}
-              className="text-primary hover:text-primary/80 transition-colors"
-            >
-              ↩ 戻る
-            </button>
-          )}
         </div>
       );
     }

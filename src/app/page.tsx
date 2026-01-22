@@ -14,7 +14,6 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<TabType>("trend");
   const [likedIdea, setLikedIdea] = useState<Idea | null>(null);
   const [hasCards, setHasCards] = useState(true);
-  const [canUndo, setCanUndo] = useState(false);
   const cardStackRef = useRef<CardStackRef>(null);
 
   const ideas = getIdeasByStatus(activeTab);
@@ -22,14 +21,6 @@ export default function Home() {
   const handleSwipe = (idea: Idea, direction: "left" | "right") => {
     if (direction === "right") {
       setLikedIdea(idea);
-    }
-    setCanUndo(true);
-  };
-
-  const handleUndo = () => {
-    const success = cardStackRef.current?.undo();
-    if (success) {
-      setCanUndo(cardStackRef.current?.canUndo ?? false);
     }
   };
 
@@ -55,10 +46,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
-      <TabNav activeTab={activeTab} onTabChange={(tab) => {
-        setActiveTab(tab);
-        setCanUndo(false);
-      }} />
+      <TabNav activeTab={activeTab} onTabChange={setActiveTab} />
 
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-6">
         <div className="card-stack-glow">
@@ -67,9 +55,7 @@ export default function Home() {
         <SwipeControls
           onNope={handleNope}
           onLike={handleLike}
-          onUndo={handleUndo}
           disabled={!hasCards}
-          canUndo={canUndo}
         />
       </main>
 

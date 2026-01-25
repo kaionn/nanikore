@@ -156,16 +156,16 @@ export const CardStack = forwardRef<CardStackRef, CardStackProps>(
                 {isTop && (
                   <>
                     <motion.div
-                      className="absolute -top-2 -right-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-bold text-lg z-10 rotate-12"
+                      className="absolute -top-2 -right-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg font-bold text-lg z-10 rotate-12 flex items-center gap-1"
                       style={{ opacity: likeOpacity }}
                     >
-                      LIKE
+                      🤝 わかる
                     </motion.div>
                     <motion.div
-                      className="absolute -top-2 -left-2 bg-destructive text-white px-4 py-2 rounded-lg font-bold text-lg z-10 -rotate-12"
+                      className="absolute -top-2 -left-2 bg-cyan-500 text-white px-4 py-2 rounded-lg font-bold text-lg z-10 -rotate-12 flex items-center gap-1"
                       style={{ opacity: nopeOpacity }}
                     >
-                      NOPE
+                      👋 スルー
                     </motion.div>
                   </>
                 )}

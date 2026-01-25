@@ -1,69 +1,32 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Header } from "@/components/Header";
-import { TabNav } from "@/components/TabNav";
-import { CardStack, CardStackRef } from "@/components/CardStack";
-import { SwipeControls } from "@/components/SwipeControls";
-import { ActionButton } from "@/components/ActionButton";
-import { FloatingActionButton } from "@/components/FloatingActionButton";
-import { getIdeasByStatus } from "@/data/mockIdeas";
-import { TabType, Idea } from "@/types/idea";
+import { MobileHeader } from "@/components/mobile/MobileHeader";
+import { SwipeableCardStack } from "@/components/mobile/SwipeableCardStack";
+import { MobileFooter } from "@/components/mobile/MobileFooter";
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<TabType>("trend");
-  const [likedIdea, setLikedIdea] = useState<Idea | null>(null);
-  const [hasCards, setHasCards] = useState(true);
-  const cardStackRef = useRef<CardStackRef>(null);
-
-  const ideas = getIdeasByStatus(activeTab);
-
-  const handleSwipe = (idea: Idea, direction: "left" | "right") => {
-    if (direction === "right") {
-      setLikedIdea(idea);
-    }
-  };
-
-  const handleNope = () => {
-    cardStackRef.current?.swipe("left");
-  };
-
-  const handleLike = () => {
-    cardStackRef.current?.swipe("right");
-  };
-
-  const handleBuildIt = () => {
-    if (likedIdea) {
-      alert(`「${likedIdea.title}」にコミットしました！🚀`);
-      setLikedIdea(null);
-    }
-  };
-
-  const handleAddIdea = () => {
-    alert("新しいアイデアを投稿する機能は準備中です 🚧");
-  };
-
   return (
-    <div className="min-h-screen bg-background flex flex-col max-w-md mx-auto border-x border-gray-800">
-      <Header />
-      <TabNav activeTab={activeTab} onTabChange={setActiveTab} />
+    <div className="min-h-screen bg-[#121212] flex flex-col items-center relative overflow-hidden font-sans text-white">
+      {/* Background Ambience */}
+      <div className="absolute top-[-20%] left-[-20%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <main className="flex-1 flex flex-col items-center justify-center px-4 py-6 pb-24">
-        <div className="card-stack-glow">
-          <CardStack ref={cardStackRef} ideas={ideas} onSwipe={handleSwipe} />
-        </div>
-        <SwipeControls
-          onNope={handleNope}
-          onLike={handleLike}
-          disabled={!hasCards}
-        />
+      {/* Grid Pattern Overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-20"
+        style={{
+            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+        }}
+      />
+
+      <MobileHeader />
+
+      <main className="flex-1 w-full flex flex-col items-center justify-center p-4 z-10">
+        <SwipeableCardStack />
       </main>
 
-      <FloatingActionButton onClick={handleAddIdea} />
-
-      <footer className="p-4 pb-8 max-w-md mx-auto w-full fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-background via-background/90 to-transparent">
-        <ActionButton onClick={handleBuildIt} disabled={!likedIdea} />
-      </footer>
+      <MobileFooter />
     </div>
   );
 }

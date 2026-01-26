@@ -3,7 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* NAIKORE Cyberpunk Theme */
+/* NAIKORE Cyberpunk & Glassmorphism Theme */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -14,6 +14,10 @@
   --color-neon: var(--neon);
   --color-neon-foreground: var(--neon-foreground);
   --color-neon-glow: var(--neon-glow);
+  
+  /* Glassmorphism support */
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
 
   /* Sidebar colors */
   --color-sidebar-ring: var(--sidebar-ring);
@@ -58,47 +62,59 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
 }
 
-/* NAIKORE is always dark mode - Cyberpunk aesthetic */
+/* NAIKORE Cyberpunk Theme Root */
 :root {
   --radius: 0.75rem;
 
   /* Jet Black background #121212 */
-  --background: oklch(0.145 0 0);
+  --background: oklch(0.12 0 0);
   --foreground: oklch(0.985 0 0);
 
-  /* Card: Dark charcoal #1a1a1a */
-  --card: oklch(0.18 0 0);
+  /* Card: Darker, cleaner */
+  --card: oklch(0.15 0 0);
   --card-foreground: oklch(0.985 0 0);
 
   /* Popover */
-  --popover: oklch(0.18 0 0);
+  --popover: oklch(0.15 0 0);
   --popover-foreground: oklch(0.985 0 0);
 
-  /* Primary: Neon Lime Green #CCFF00 */
+  /* Primary: Neon Electric Lime #CCFF00 */
   --primary: oklch(0.93 0.25 115);
-  --primary-foreground: oklch(0.145 0 0);
+  --primary-foreground: oklch(0.12 0 0);
 
-  /* Neon accent (alias for primary) */
+  /* Neon tokens */
   --neon: oklch(0.93 0.25 115);
-  --neon-foreground: oklch(0.145 0 0);
-  --neon-glow: oklch(0.93 0.25 115 / 50%);
+  --neon-foreground: oklch(0.12 0 0);
+  --neon-glow: oklch(0.93 0.25 115 / 60%);
 
-  /* Secondary: Darker gray */
+  /* Glass tokens */
+  --glass: oklch(0.985 0 0 / 5%);
+  --glass-border: oklch(0.985 0 0 / 10%);
+
+  /* Secondary: Deep Gray */
   --secondary: oklch(0.22 0 0);
   --secondary-foreground: oklch(0.985 0 0);
 
-  /* Muted: Gray text */
-  --muted: oklch(0.25 0 0);
-  --muted-foreground: oklch(0.6 0 0);
+  /* Muted */
+  --muted: oklch(0.20 0 0);
+  --muted-foreground: oklch(0.65 0 0);
 
-  /* Accent: Same as neon */
-  --accent: oklch(0.93 0.25 115);
-  --accent-foreground: oklch(0.145 0 0);
+  /* Accent */
+  --accent: oklch(0.25 0 0);
+  --accent-foreground: oklch(0.985 0 0);
 
-  /* Destructive: Red */
+  /* Destructive */
   --destructive: oklch(0.65 0.25 25);
+  --destructive-foreground: oklch(0.985 0 0);
 
   /* Border and input */
   --border: oklch(1 0 0 / 10%);
@@ -113,52 +129,22 @@
   --chart-5: oklch(0.65 0.25 25);
 
   /* Sidebar */
-  --sidebar: oklch(0.12 0 0);
+  --sidebar: oklch(0.10 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.93 0.25 115);
-  --sidebar-primary-foreground: oklch(0.145 0 0);
-  --sidebar-accent: oklch(0.22 0 0);
+  --sidebar-primary-foreground: oklch(0.12 0 0);
+  --sidebar-accent: oklch(0.18 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-border: oklch(1 0 0 / 8%);
   --sidebar-ring: oklch(0.93 0.25 115);
 }
 
 /* Dark mode is the same (always dark) */
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: oklch(0.12 0 0);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.18 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.18 0 0);
-  --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.93 0.25 115);
-  --primary-foreground: oklch(0.145 0 0);
-  --neon: oklch(0.93 0.25 115);
-  --neon-foreground: oklch(0.145 0 0);
-  --neon-glow: oklch(0.93 0.25 115 / 50%);
-  --secondary: oklch(0.22 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.25 0 0);
-  --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.93 0.25 115);
-  --accent-foreground: oklch(0.145 0 0);
-  --destructive: oklch(0.65 0.25 25);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.93 0.25 115);
-  --chart-1: oklch(0.93 0.25 115);
-  --chart-2: oklch(0.7 0.2 200);
-  --chart-3: oklch(0.8 0.2 320);
-  --chart-4: oklch(0.75 0.15 60);
-  --chart-5: oklch(0.65 0.25 25);
-  --sidebar: oklch(0.12 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.93 0.25 115);
-  --sidebar-primary-foreground: oklch(0.145 0 0);
-  --sidebar-accent: oklch(0.22 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.93 0.25 115);
+  --primary-foreground: oklch(0.12 0 0);
 }
 
 @layer base {
@@ -167,123 +153,42 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    /* Improved background rendering */
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
 }
 
 /* Custom utilities for neon glow effects */
 @layer utilities {
   .neon-glow {
-    box-shadow:
-      0 0 5px var(--neon-glow),
-      0 0 10px var(--neon-glow),
-      0 0 20px var(--neon-glow);
+    box-shadow: 0 0 5px var(--neon-glow), 0 0 10px var(--neon-glow), 0 0 20px var(--neon-glow);
+  }
+  
+  .neon-text {
+    text-shadow: 0 0 5px var(--neon-glow), 0 0 10px var(--neon-glow);
   }
 
-  .neon-glow-sm {
-    box-shadow:
-      0 0 3px var(--neon-glow),
-      0 0 6px var(--neon-glow);
+  /* Glassmorphism Utility */
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg;
+  }
+  
+  .glass-button {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 transition-all active:scale-95;
   }
 
-  .neon-glow-lg {
-    box-shadow:
-      0 0 10px var(--neon-glow),
-      0 0 20px var(--neon-glow),
-      0 0 40px var(--neon-glow);
+  /* Cyberpunk Grid Background */
+  .cyber-grid-bg {
+    background-color: var(--background);
+    background-image: 
+        linear-gradient(rgba(204, 255, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(204, 255, 0, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
   }
 
-  .neon-border {
-    border-color: var(--neon);
-    box-shadow:
-      0 0 5px var(--neon-glow),
-      inset 0 0 5px var(--neon-glow);
-  }
-
-  .text-neon-glow {
-    text-shadow:
-      0 0 5px var(--neon-glow),
-      0 0 10px var(--neon-glow);
-  }
-
-  .neon-pulse {
-    animation: neon-pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes neon-pulse {
-    0%, 100% {
-      box-shadow:
-        0 0 5px var(--neon-glow),
-        0 0 10px var(--neon-glow),
-        0 0 20px var(--neon-glow);
-    }
-    50% {
-      box-shadow:
-        0 0 10px var(--neon-glow),
-        0 0 20px var(--neon-glow),
-        0 0 40px var(--neon-glow);
-    }
-  }
-
-  /* Background glow for card stack (desktop only) */
-  .card-stack-glow {
-    position: relative;
-    isolation: isolate;
-  }
-
-  @media (min-width: 768px) {
-    /* Main grid background */
-    body {
-      background-color: #121212;
-      background-image: 
-        linear-gradient(rgba(204, 255, 0, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(204, 255, 0, 0.05) 1px, transparent 1px);
-      background-size: 40px 40px;
-      position: relative;
-    }
-
-    /* Circuit board overlay pattern */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 2.24 5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(204, 255, 0, 0.03)' fill-rule='evenodd'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: -2;
-    }
-
-    /* Floor perspective gradient */
-    body::after {
-      content: "";
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 40vh;
-      background: linear-gradient(to top, rgba(204, 255, 0, 0.05) 0%, transparent 100%);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .card-stack-glow::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(
-        circle at center,
-        oklch(0.93 0.25 115 / 15%) 0%,
-        oklch(0.93 0.25 115 / 5%) 40%,
-        transparent 70%
-      );
-      pointer-events: none;
-      z-index: -1;
-      filter: blur(80px);
-    }
+  .text-stroke {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    color: transparent;
   }
 }

@@ -6,24 +6,29 @@ import { MobileFooter } from "@/components/mobile/MobileFooter";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#121212] flex flex-col items-center relative overflow-hidden font-sans text-white">
-      {/* Background Ambience */}
-      <div className="absolute top-[-20%] left-[-20%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
+    <div className="relative min-h-[100dvh] w-full bg-background overflow-hidden font-sans text-white selection:bg-primary/30">
+      
+      {/* --- Ambient Background Layers --- */}
+      
+      {/* 1. Cyber Grid Pattern */}
+      <div className="absolute inset-0 cyber-grid-bg opacity-30 pointer-events-none" />
 
-      {/* Grid Pattern Overlay */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-20"
-        style={{
-            backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
-        }}
-      />
+      {/* 2. Animated Glow Blobs */}
+      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] animate-pulse pointer-events-none mix-blend-screen" />
+      <div className="absolute bottom-[-10%] right-[-20%] w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+      
+      {/* 3. Floating Particles (Simulated with CSS) */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] brightness-150 contrast-150" />
 
+      {/* --- Main Content --- */}
+      
       <MobileHeader />
 
-      <main className="flex-1 w-full flex flex-col items-center justify-center p-4 z-10">
-        <SwipeableCardStack />
+      <main className="relative flex flex-col items-center justify-center w-full h-[100dvh] pt-20 pb-24 px-4 overflow-hidden">
+        {/* Card Stack Container */}
+        <div className="w-full h-full max-w-md flex flex-col justify-center">
+             <SwipeableCardStack />
+        </div>
       </main>
 
       <MobileFooter />

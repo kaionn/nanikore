@@ -2,7 +2,7 @@ import { Ticket } from "lucide-react";
 
 export function MobileHeader() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 pt-14 pb-4 flex flex-col items-start transition-all duration-300 pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 pl-16 pr-6 pt-14 pb-4 flex flex-col items-start transition-all duration-300 pointer-events-none">
       {/* Dynamic Header Background (Glass) */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent backdrop-blur-[2px] -z-10" />
 

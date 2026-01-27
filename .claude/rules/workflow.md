@@ -17,7 +17,7 @@ PMは **Cursor** でも **PM Claude** でもOKです（ソロ運用では PM Cla
 
 ## タスク管理
 
-- タスクは `Plans.md` で一元管理
+- タスクは `docs/Plans.md` で一元管理
 - マーカーでステータスを追跡:
   - `pm:依頼中` → PM から依頼（互換: `cursor:依頼中`）
   - `cc:WIP` → Claude Code 作業中
@@ -27,7 +27,7 @@ PMは **Cursor** でも **PM Claude** でもOKです（ソロ運用では PM Cla
 ## ハンドオフプロトコル
 
 ### PM → Impl
-1. Plans.md にタスクを記載し `pm:依頼中` マーカー（互換: `cursor:依頼中`）
+1. docs/Plans.md または対象タスクファイルにタスクを記載し `pm:依頼中` マーカー（互換: `cursor:依頼中`）
 2. **PM Claude の場合**: `/handoff-to-impl-claude` で依頼文を生成
 3. **Cursor の場合**: `/handoff-to-claude`（Cursor側コマンド）で依頼文を生成
 4. Impl Claude（Claude Code）へ貼り付け
@@ -40,7 +40,7 @@ PMは **Cursor** でも **PM Claude** でもOKです（ソロ運用では PM Cla
 
 ## 禁止事項
 
-- ❌ 開発用ファイルの外部公開（CLAUDE.md, AGENTS.md, Plans.md）
+- ❌ 開発用ファイルの外部公開（CLAUDE.md, AGENTS.md, docs/Plans.md）
 - ❌ 明示的な依頼なしの大規模リファクタリング
 - ❌ テストなしの機能追加
 - ❌ 本番環境への直接デプロイ（PM の承認必須）

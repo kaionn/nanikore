@@ -1,9 +1,12 @@
 ---
 description: Plans.md タスク管理ルール（Plans.md 編集時のみ適用）
-paths: "**/Plans.md"
+paths: ["docs/Plans.md", "docs/plans/**/*.md"]
 ---
 
 # Plans.md Management Rules
+
+> タスクファイルは `docs/plans/` 配下に配置されています。
+> ステータスに応じて `todo/`、`wip/`、`done/` ディレクトリに移動します。
 
 ## タスク記述フォーマット
 
